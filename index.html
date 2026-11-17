@@ -27,56 +27,56 @@
 
 <h1>Dzmitry Paulouski</h1>
 
-<p>I am a Senior DevOps Engineer. I have worked in IT since 2014 and on cloud infrastructure since 2018: Azure first, AWS now. Certified Kubernetes Administrator and Azure Administrator.</p>
+<p>I'm a Senior DevOps Engineer. I've worked in IT since 2014 and on cloud infrastructure since 2018, first on Azure and now on AWS. I hold the CKA and Azure Administrator certifications.</p>
 
-<p>Right now I am at Tripledot Studios, a mobile games studio. Two of us run 12 EKS clusters across 6 AWS accounts for more than 60 developers, plus the data and ML teams.</p>
+<p>I work at Tripledot Studios, a mobile games company. Two of us handle infrastructure there: 12 EKS clusters in 6 AWS accounts, used by more than 60 developers and by the data and ML teams.</p>
 
-<p>I go for the most complex projects on the team, and I care about what the infrastructure costs, not only whether it works. I use AI agents every day and build them into our tooling. I also interview candidates, mentor juniors, and have run several DevOps trainings.</p>
+<p>I like taking the hardest projects on the team, and I keep an eye on what the infrastructure costs. I use AI agents every day and have built them into our tooling. I also interview candidates, mentor juniors, and have run several DevOps trainings.</p>
 
 <p><a href="mailto:steelrat26@gmail.com">Write me if you want to work together</a></p>
 
 <h2>Selected work at Tripledot</h2>
 
-<p><b>An AI on-call assistant.</b> When an alert lands in Slack, a bot in our DevOps portal investigates it. It gathers read-only evidence from Kubernetes, Prometheus, Loki and Argo CD across all 12 clusters, asks Claude on AWS Bedrock for the likely root cause, and replies in the alert thread with the cost of each investigation tracked.</p>
+<p>I built an on-call bot into our DevOps portal. When an alert lands in Slack, it pulls read-only data from Kubernetes, Prometheus, Loki and Argo CD across all 12 clusters, asks Claude on AWS Bedrock for the likely cause, and answers in the alert thread. It also records what each investigation cost.</p>
 
-<p><b>A critical PHP vulnerability closed on 9 production services.</b> For an unauthenticated remote-code-execution bug (CVSS 9.2), scanned 107 repositories and moved 9 live services to a patched PHP, including two legacy Symfony 3.4 apps. Before each rollout I ran the old and new images side by side and diffed responses, database and queues: up to 266 of 266 identical.</p>
+<p>A PHP bug with a CVSS score of 9.2 let anyone run code on a server without logging in. I scanned 107 repositories and moved 9 production services to a patched PHP, two of them old Symfony 3.4 apps. Before each rollout I ran the old and new images side by side and compared responses, database writes and queues. In the largest run, 266 of 266 checks matched.</p>
 
-<p><b>Alert noise down from ~48 a day to a few.</b> Audited 72 Grafana alert rules across 10 Slack channels, retuned thresholds and routing so critical alerts stand out, and added “metrics missing” alerts for 11 production clusters.</p>
+<p>Our Slack alert channels used to get about 48 notifications a day. I went through 72 Grafana alert rules in 10 channels, changed thresholds and routing so critical alerts get noticed, and added alerts for metrics going missing on any of 11 production clusters. Now there are a few a day.</p>
 
-<p><b>10 EKS clusters upgraded, two versions each.</b> Took the fleet from Kubernetes 1.34 to 1.36 with Terraform, rolling stateful Redis Sentinel, MongoDB and MySQL by hand. Found and fixed a Sentinel bug that announced stale IPs along the way.</p>
+<p>I upgraded 10 EKS clusters from Kubernetes 1.34 to 1.36 with Terraform, one minor version at a time, and rolled the Redis Sentinel, MongoDB and MySQL workloads by hand. During the upgrade I found that Sentinel was announcing stale IP addresses, and fixed it.</p>
 
-<p><b>A 7-year-old game backend moved from Docker Swarm to EKS.</b> Rebuilt a legacy Rails backend as a Helm release with Postgres 16, Redis, External Secrets and nightly S3 backups. A full rehearsal of the 13 GB database matched the source schema exactly and planned the cutover at about 20 minutes of downtime.</p>
+<p>A Rails game backend had been running on Docker Swarm with 7-year-old images. I moved it to EKS as a Helm release with Postgres 16, Redis, External Secrets and nightly backups to S3. I rehearsed the move on a copy of the 13 GB database first: the schema matched exactly, and the plan put downtime at about 20 minutes.</p>
 
-<p><b>Database monitoring moved off PMM.</b> Replaced Percona PMM with Prometheus and Grafana for 66 MySQL and MongoDB databases on 8 clusters: shared exporters, 17 dashboards and 14 alert rules ported and checked against live data.</p>
+<p>I replaced Percona PMM with Prometheus and Grafana for 66 MySQL and MongoDB databases on 8 clusters. That meant shared exporters, plus 17 dashboards and 14 alert rules ported from PMM and checked against live data.</p>
 
-<p><b>A FinOps portal in production.</b> Took an internal DevOps portal live on Kubernetes: AWS waste and rightsizing, Savings Plans coverage and Kubernetes request hygiene across 6 AWS accounts, with SSO, IRSA, Helm and Argo CD.</p>
+<p>I took our internal DevOps portal to production on Kubernetes, with SSO, IRSA, Helm and Argo CD. It reports AWS waste, rightsizing, Savings Plans coverage and pods without resource requests across 6 AWS accounts.</p>
 
-<p><b>An AI video-similarity service on EKS.</b> Deployed a CPU-heavy service built on CLIP, ffmpeg and headless Chromium: separate API and vision workers, Postgres with pgvector, nightly backups, Terraform for ECR, S3, KMS and IRSA, and Okta sign-in.</p>
+<p>I deployed an AI service that compares video ad creatives. It runs on CPU with CLIP, ffmpeg and headless Chromium, with the API and the vision workers as separate deployments, Postgres with pgvector, nightly backups, Okta sign-in, and Terraform for ECR, S3, KMS and IRSA.</p>
 
-<p><b>Unity CI on Kubernetes.</b> Built an EKS cluster for Unity GitHub Actions runners, and moved the linter workflow of 36 game repositories onto it, with the runner picked by each repo’s Unity version.</p>
+<p>I built an EKS cluster for Unity GitHub Actions runners and moved the linter workflow of 36 game repositories onto it. Each repository gets a runner that matches its Unity version.</p>
 
-<p>Also: onboarding new services end to end (Terraform for ECR, S3 and CloudFront, DynamoDB, IAM and secrets, then a Helm chart and an Argo CD app); preview environments for every pull request with Argo CD ApplicationSet; production deploys that ship only what passed CI; runtime security with Sweet Security and kernel CVE triage across ~300 nodes; syncing 1Password and AWS Secrets Manager into Kubernetes; running Airflow, MLflow, Feast and Redash for the data and ML teams; MySQL backups with XtraBackup and nightly validation of a 1.4 TB production backup; migrating from Terraform to OpenTofu; and a cost and security audit of 12 clusters and 104 node groups.</p>
+<p>Other work: I onboard new services end to end, from Terraform (ECR, S3 and CloudFront, DynamoDB, IAM, secrets) to a Helm chart and an Argo CD app. I set up preview environments for every pull request with Argo CD ApplicationSet, and production deploys that ship only builds that passed CI. Runtime security runs on Sweet Security, and I triaged kernel CVEs across about 300 nodes. Secrets sync into Kubernetes from 1Password and AWS Secrets Manager. For the data and ML teams I run Airflow, MLflow, Feast and Redash. MySQL is backed up with XtraBackup, and a nightly job validates the 1.4 TB production backup. We moved from Terraform to OpenTofu, and I audited 12 clusters and 104 node groups for cost and security.</p>
 
 <h2>Where I have worked</h2>
 
-<p><b>Tripledot Studios</b>, Senior DevOps Engineer, 2023–now.
-AWS and Kubernetes infrastructure for mobile games, GitOps delivery, FinOps, cloud security with Orca and Sweet Security, monitoring, data and ML platforms.</p>
+<p><b>Tripledot Studios</b>, Senior DevOps Engineer, since 2023.
+AWS and Kubernetes infrastructure for mobile games: GitOps delivery, FinOps, cloud security with Orca and Sweet Security, monitoring, and the data and ML platforms.</p>
 
-<p><b>EPAM Systems</b>, Lead Systems Engineer, 2022–2023.
-FinTech client, 5 systems engineers and 40 developers. AKS clusters, Terraform, and CI/CD for Java services on Azure DevOps.</p>
+<p><b>EPAM Systems</b>, Lead Systems Engineer, 2022 to 2023.
+A FinTech client with 5 systems engineers and 40 developers. I ran AKS clusters, wrote the Terraform, and built CI/CD for Java services on Azure DevOps.</p>
 
-<p><b>EPAM Systems</b>, Senior Systems Engineer, 2020–2022.
-Energy client. Built the infrastructure-as-code pipeline from scratch on Azure DevOps and Terraform, and ran AKS clusters for Elasticsearch with Flux, Istio and KEDA.</p>
+<p><b>EPAM Systems</b>, Senior Systems Engineer, 2020 to 2022.
+An energy client. I built the infrastructure-as-code pipeline from scratch on Azure DevOps and Terraform, and ran AKS clusters for Elasticsearch with Flux, Istio and KEDA.</p>
 
-<p><b>EPAM Systems</b>, Systems Engineer, 2018–2020.
-Retail client. Azure infrastructure for BizTalk, Dynamics CRM, Sitecore and more: over 4,000 resources under ARM and Terraform, 100+ VMs under PowerShell DSC, on-call.</p>
+<p><b>EPAM Systems</b>, Systems Engineer, 2018 to 2020.
+A retail client running BizTalk, Dynamics CRM, Sitecore and other systems on Azure. We kept over 4,000 resources in ARM templates and Terraform and more than 100 VMs under PowerShell DSC, and I was on call.</p>
 
-<p><b>Eurozapchast (Armtek)</b>, System Administrator, 2014–2018.
-Windows infrastructure: Active Directory, DNS, DHCP, backups, Hyper-V, Citrix, PowerShell.</p>
+<p><b>Eurozapchast (Armtek)</b>, System Administrator, 2014 to 2018.
+Windows infrastructure: Active Directory, DNS, DHCP, backups, Hyper-V, Citrix and PowerShell scripts.</p>
 
 <h2>What I work with</h2>
 
-<p>AWS (EKS, EC2, RDS, S3, CloudFront, IAM, Bedrock), Azure (AKS, Azure DevOps), Kubernetes, Helm, Argo CD, Flux, Terraform and OpenTofu, GitHub Actions, External Secrets, Prometheus, Thanos, Grafana, Loki, New Relic, MySQL (Percona), MongoDB, Redis, PostgreSQL, Airflow, MLflow, Python, Bash, TypeScript, PowerShell, Linux. Claude Code and Cursor every day.</p>
+<p>AWS (EKS, EC2, RDS, S3, CloudFront, IAM, Bedrock), Azure (AKS, Azure DevOps), Kubernetes, Helm, Argo CD, Flux, Terraform and OpenTofu, GitHub Actions, External Secrets, Prometheus, Thanos, Grafana, Loki, New Relic, MySQL (Percona), MongoDB, Redis, PostgreSQL, Airflow, MLflow, Python, Bash, TypeScript, PowerShell, Linux, Claude Code and Cursor.</p>
 
 <h2>Certifications</h2>
 
@@ -85,7 +85,7 @@ Microsoft Certified: Azure Administrator, 2019.</p>
 
 <h2>Education</h2>
 
-<p>Bachelor’s degree in Telecommunications Network Software.</p>
+<p>Bachelor's degree in Telecommunications Network Software.</p>
 
 <h2>Contact</h2>
 
