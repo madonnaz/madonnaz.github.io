@@ -39,19 +39,23 @@
 
 <p><b>An AI on-call assistant.</b> When an alert lands in Slack, a bot in our DevOps portal investigates it. It gathers read-only evidence from Kubernetes, Prometheus, Loki and Argo CD across all 12 clusters, asks Claude on AWS Bedrock for the likely root cause, and replies in the alert thread with the cost of each investigation tracked.</p>
 
+<p><b>A critical PHP vulnerability closed on 9 production services.</b> For an unauthenticated remote-code-execution bug (CVSS 9.2), scanned 107 repositories and moved 9 live services to a patched PHP, including two legacy Symfony 3.4 apps. Before each rollout I ran the old and new images side by side and diffed responses, database and queues: up to 266 of 266 identical.</p>
+
 <p><b>Alert noise down from ~48 a day to a few.</b> Audited 72 Grafana alert rules across 10 Slack channels, retuned thresholds and routing so critical alerts stand out, and added “metrics missing” alerts for 11 production clusters.</p>
 
 <p><b>10 EKS clusters upgraded, two versions each.</b> Took the fleet from Kubernetes 1.34 to 1.36 with Terraform, rolling stateful Redis Sentinel, MongoDB and MySQL by hand. Found and fixed a Sentinel bug that announced stale IPs along the way.</p>
+
+<p><b>A 7-year-old game backend moved from Docker Swarm to EKS.</b> Rebuilt a legacy Rails backend as a Helm release with Postgres 16, Redis, External Secrets and nightly S3 backups. A full rehearsal of the 13 GB database matched the source schema exactly and planned the cutover at about 20 minutes of downtime.</p>
 
 <p><b>Database monitoring moved off PMM.</b> Replaced Percona PMM with Prometheus and Grafana for 66 MySQL and MongoDB databases on 8 clusters: shared exporters, 17 dashboards and 14 alert rules ported and checked against live data.</p>
 
 <p><b>A FinOps portal in production.</b> Took an internal DevOps portal live on Kubernetes: AWS waste and rightsizing, Savings Plans coverage and Kubernetes request hygiene across 6 AWS accounts, with SSO, IRSA, Helm and Argo CD.</p>
 
-<p><b>Preview environments per pull request.</b> Put a label on a PR and Argo CD ApplicationSet deploys the branch into its own environment, with a shared database and secrets.</p>
+<p><b>An AI video-similarity service on EKS.</b> Deployed a CPU-heavy service built on CLIP, ffmpeg and headless Chromium: separate API and vision workers, Postgres with pgvector, nightly backups, Terraform for ECR, S3, KMS and IRSA, and Okta sign-in.</p>
 
 <p><b>Unity CI on Kubernetes.</b> Built an EKS cluster for Unity GitHub Actions runners, and moved the linter workflow of 36 game repositories onto it, with the runner picked by each repo’s Unity version.</p>
 
-<p>Also: onboarding new services end to end (Terraform for ECR, S3 and CloudFront, DynamoDB, IAM and secrets, then a Helm chart and an Argo CD app); syncing 1Password and AWS Secrets Manager into Kubernetes; running Airflow, MLflow, Feast and Redash for the data and ML teams; MySQL backups with XtraBackup and nightly validation of a 1.4 TB production backup; migrating from Terraform to OpenTofu; and a cost and security audit of 12 clusters and 104 node groups.</p>
+<p>Also: onboarding new services end to end (Terraform for ECR, S3 and CloudFront, DynamoDB, IAM and secrets, then a Helm chart and an Argo CD app); preview environments for every pull request with Argo CD ApplicationSet; production deploys that ship only what passed CI; runtime security with Sweet Security and kernel CVE triage across ~300 nodes; syncing 1Password and AWS Secrets Manager into Kubernetes; running Airflow, MLflow, Feast and Redash for the data and ML teams; MySQL backups with XtraBackup and nightly validation of a 1.4 TB production backup; migrating from Terraform to OpenTofu; and a cost and security audit of 12 clusters and 104 node groups.</p>
 
 <h2>Where I have worked</h2>
 
